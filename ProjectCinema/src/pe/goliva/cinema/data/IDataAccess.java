@@ -18,7 +18,7 @@ public interface IDataAccess {
 
 	void writeMovie(Movie movie, String nameArchive, boolean anex) throws WriteDataExc;
 
-	String sarchMovie(String nameArchive, String search) throws DataAccessExc;
+	String searchMovie(String nameArchive, String search) throws DataAccessExc;
 
 	void createArchive(String nameArchive) throws DataAccessExc;
 
