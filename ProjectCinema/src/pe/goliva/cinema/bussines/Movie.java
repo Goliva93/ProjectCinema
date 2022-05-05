@@ -7,7 +7,7 @@ package pe.goliva.cinema.bussines;
  * 
  */
 public class Movie {
-	String nameMovie;
+	private String nameMovie;
 
 	public Movie() {
 		super();
