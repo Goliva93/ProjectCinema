@@ -16,5 +16,7 @@ public interface IMovieCatalog {
 	void searchMovie(String search);
 
 	void createMovieCatalog();
+	
+	void deleteCatalog();
 
 }

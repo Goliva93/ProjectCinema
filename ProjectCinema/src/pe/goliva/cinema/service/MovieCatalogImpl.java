@@ -70,4 +70,16 @@ public class MovieCatalogImpl implements IMovieCatalog{
 	}
 	}
 
+	@Override
+	public void deleteCatalog() {
+		try {
+			data.deleteArchive(NAME_RECEARCH);
+			data.createArchive(NAME_RECEARCH);
+		} catch (DataAccessExc e) {
+			
+			System.out.println("no existe el archivo, ERROR" + e.getMessage());
+		}
+		
+	}
+
 }

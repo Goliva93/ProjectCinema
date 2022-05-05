@@ -22,7 +22,8 @@ public class ViewCatalog {
 								"1 - Start movies catalog" + "\n" + 
 								"2 - Agree movie" + "\n" + 
 								"3 - List movie " + "\n" + 
-								"4 - Search movie ");
+								"4 - Search movie " + "\n" + 
+								"5 - delete catalog");
 			option = Integer.parseInt(scan.nextLine());
 
 			switch (option) {
@@ -42,6 +43,9 @@ public class ViewCatalog {
 				System.out.println("Enter movie name : ");
 				var search = scan.nextLine();
 				catalog.searchMovie(search);
+				break;
+			case 5:
+				catalog.deleteCatalog();
 				break;
 			case 0:
 				System.out.println("see you later, thanks for use this program");
