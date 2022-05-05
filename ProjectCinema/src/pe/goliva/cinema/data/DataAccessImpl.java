@@ -25,13 +25,19 @@ public class DataAccessImpl implements IDataAccess {
 		var archive = new File(nameArchive);
 		List<Movie> movies = new ArrayList<>();
 		try {
+
 			BufferedReader entry = new BufferedReader(new FileReader(archive));
 			String line = null;
 			line = entry.readLine();
-			while (line != null) {
-				var movie = new Movie(line);
-				movies.add(movie);
-				line = entry.readLine();
+			if (line == null) {
+				System.out.println("No hay peliculas en el catalogo, ingresa una película");
+			} else {
+				while (line != null) {
+					var movie = new Movie(line);
+					movies.add(movie);
+					line = entry.readLine();
+				}
+
 			}
 			entry.close();
 		} catch (Exception e) {
@@ -68,7 +74,7 @@ public class DataAccessImpl implements IDataAccess {
 					result = "Pelicula: " + line + " - Indice: " + indice;
 					break;
 				} else {
-					indice ++;
+					indice++;
 					line = entry.readLine();
 				}
 			}
@@ -86,18 +92,18 @@ public class DataAccessImpl implements IDataAccess {
 			var out = new PrintWriter(new FileWriter(archive));
 			out.close();
 			System.out.println("se creó el archivo");
-		}catch(Exception e) {
+		} catch (Exception e) {
 			throw new DataAccessExc("Error: " + e.getMessage());
 		}
 	}
 
 	@Override
-	public void deleteArchive(String nameArchive){
+	public void deleteArchive(String nameArchive) {
 		var archive = new File(nameArchive);
-		if(archive.exists()) {
+		if (archive.exists()) {
 			archive.delete();
 			System.out.println("Se eliminó el archivo");
-		}else {
+		} else {
 			System.out.println("no se encontró el archivo");
 		}
 	}
