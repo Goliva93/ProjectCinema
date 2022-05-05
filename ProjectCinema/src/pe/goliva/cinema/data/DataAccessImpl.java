@@ -16,7 +16,7 @@ public class DataAccessImpl implements IDataAccess {
 
 	@Override
 	public boolean existsArchive(String nameArchive) throws DataAccessExc {
-		File archive = new File(nameArchive);
+		var archive = new File(nameArchive);
 		return archive.exists();
 	}
 
@@ -29,7 +29,7 @@ public class DataAccessImpl implements IDataAccess {
 			String line = null;
 			line = entry.readLine();
 			while (line != null) {
-				Movie movie = new Movie(line);
+				var movie = new Movie(line);
 				movies.add(movie);
 				line = entry.readLine();
 			}
@@ -46,16 +46,16 @@ public class DataAccessImpl implements IDataAccess {
 		var archive = new File(nameArchive);
 		try {
 			var out = new PrintWriter(new FileWriter(archive, anex));
-			out.println(movie.toString());
+			out.println(movie.getNameMovie());
 			out.close();
-			System.out.println("Se añadió la película" + movie);
+			System.out.println("Se añadió la película : " + movie.getNameMovie());
 		} catch (Exception e) {
 			throw new WriteDataExc("Exception to Write Movie : " + e.getMessage());
 		}
 	}
 
 	@Override
-	public String sarchMovie(String nameArchive, String search) throws DataAccessExc {
+	public String searchMovie(String nameArchive, String search) throws DataAccessExc {
 		var archive = new File(nameArchive);
 		String result = null;
 		try {
@@ -64,13 +64,12 @@ public class DataAccessImpl implements IDataAccess {
 			line = entry.readLine();
 			int indice = 1;
 			while (line != null) {
-				if (line.equalsIgnoreCase(search)) {
+				if (search != null && line.equalsIgnoreCase(search)) {
 					result = "Pelicula: " + line + " - Indice: " + indice;
 					break;
 				} else {
 					indice ++;
 					line = entry.readLine();
-					continue;
 				}
 			}
 			entry.close();
@@ -85,7 +84,6 @@ public class DataAccessImpl implements IDataAccess {
 		var archive = new File(nameArchive);
 		try {
 			var out = new PrintWriter(new FileWriter(archive));
-			out.println("");
 			out.close();
 			System.out.println("se creó el archivo");
 		}catch(Exception e) {
