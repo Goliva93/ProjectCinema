@@ -7,9 +7,9 @@ package pe.goliva.cinema.exceptions;
  * 
  */
 @SuppressWarnings("serial")
-public class DataAccessExc extends Exception {
-	
-	public  DataAccessExc(String message) {
+public class WriteDataExc extends DataAccessExc{
+	public WriteDataExc(String message) {
 		super(message);
 	}
+
 }
