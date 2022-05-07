@@ -26,7 +26,7 @@ public class DataAccessImpl implements IDataAccess {
 		List<Movie> movies = new ArrayList<>();
 		try {
 
-			BufferedReader entry = new BufferedReader(new FileReader(archive));
+			var entry = new BufferedReader(new FileReader(archive));
 			String line = null;
 			line = entry.readLine();
 			if (line == null) {
